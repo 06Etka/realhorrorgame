@@ -12,7 +12,7 @@ public class AudioPlayer : MonoBehaviour
         Instance = this;
     }
 
-    public void PlayAudio(Transform _spawnPos, bool isAttached, AudioClip _clip, bool _useIsPlaying)
+    public void PlayAudio(Transform _spawnPos, bool isAttached, AudioClip _clip, bool _useIsPlaying, float _timeToRemove)
     {
         AudioSource audioPlayer = Instantiate(audioPlayerPrefab, _spawnPos.position, Quaternion.identity);
         if (isAttached)
@@ -29,5 +29,6 @@ public class AudioPlayer : MonoBehaviour
         {
             audioPlayer.PlayOneShot(_clip);
         }
+        Destroy(audioPlayer, _timeToRemove);
     }
 }
